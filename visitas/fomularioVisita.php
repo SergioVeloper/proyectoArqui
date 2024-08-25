@@ -15,7 +15,7 @@
 
         <div class="mb-3 col-12">
             <label for="comentarioVis" class="form-label">Comentario Visitador:</label>
-            <textarea id="comentarioVis" name="comentarioVis" rows="4" class="form-control" placeholder="Escribe su comentario aquí..."></textarea>
+            <textarea id="comentarioVis" name="comentarioVis" rows="4" class="form-control" placeholder="Escriba su comentario aquí..."></textarea>
         </div>
 
         <div class="mb-3 col-12">

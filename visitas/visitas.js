@@ -315,3 +315,32 @@ function obtenerPrimerIdTurno(idE, idUltimo){
     ajax.open("GET", "visitas/obtenerPrimerIdTuno.php?id_entradaSalida="+idE, true);
     ajax.send();
 }
+
+
+//Funcion para ordenar dentro de la tabla de medicos mostrada a los visitadores
+
+function ordenarVM(parametros){
+    var contenedor = document.getElementById('contenido');
+    var ajax = new XMLHttpRequest();
+
+    ajax.onreadystatechange = function(){
+        contenedor.innerHTML = ajax.responseText;
+    }
+
+    ajax.open("GET", "visitas/listarMedicosParaVisitar.php?ordenar="+parametros, true);
+    ajax.send();
+}
+function buscarLM(){
+    var contenedor = document.getElementById('contenido');
+    var palabra = document.getElementById('filtro').value;
+    var por = document.getElementById('busquedaOV').value;
+    var ajax = new XMLHttpRequest();
+
+
+    ajax.onreadystatechange = function(){
+        contenedor.innerHTML = ajax.responseText;
+    }
+
+    ajax.open("GET", "visitas/listarMedicosParaVisitar.php?filtro="+palabra+'&ordPorVisita='+por, true);
+    ajax.send();
+}
