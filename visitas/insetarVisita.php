@@ -1,5 +1,5 @@
 <?php
-include('../../conexion.php');
+include('../conexion.php');
 //$id_visitador = $_SESSION['id_visitador'];
 $id_visitador = 1;
 $id_medico = $_POST['idMedico'];

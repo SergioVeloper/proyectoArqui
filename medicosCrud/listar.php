@@ -24,11 +24,11 @@ if (isset($_GET['ordenar'])) {
 }
 if (isset($_GET['filtro'])) {
     $filtro = $_GET['filtro'];
-    $sql = "SELECT m.id as id, m.nombres as nombres, m.apellidos as apellidos, m.dir_consultorio as dir_consultorio, m.telefono as telefono, m.email as email, m.fecha_nacimiento as fecha_nacimiento, e.nombre as espNom, s.nombre  as subEsp FROM medico m left join 
+    $sql = "SELECT m.id as id, m.nombres as nombres, m.apellidos as apellidos, m.dir_consultorio as dir_consultorio, m.Zona as zona, m.telefono as telefono, m.email as email, m.fecha_nacimiento as fecha_nacimiento, e.nombre as espNom, s.nombre  as subEsp FROM medico m left join 
         especialidad e on m.especialidad_id = e.id LEFT JOIN subespecialidad s ON m.subespecialidad_id = s.id
          where m.nombres like '%$filtro%' ORDER BY $ordenar asc";
 } else {
-    $sql = "SELECT m.id as id, m.nombres as nombres , m.apellidos as apellidos, m.dir_consultorio as dir_consultorio, m.telefono as telefono, m.email as email, m.fecha_nacimiento as fecha_nacimiento, e.nombre as espNom, s.nombre  as subEsp FROM medico m left join 
+    $sql = "SELECT m.id as id, m.nombres as nombres , m.apellidos as apellidos, m.dir_consultorio as dir_consultorio, m.Zona as zona, m.telefono as telefono, m.email as email, m.fecha_nacimiento as fecha_nacimiento, e.nombre as espNom, s.nombre  as subEsp FROM medico m left join 
         especialidad e on m.especialidad_id = e.id LEFT JOIN subespecialidad s ON m.subespecialidad_id = s.id ORDER BY $ordenar asc";
 }
 //echo $sql;
@@ -51,6 +51,7 @@ if ($resultado->num_rows > 0) {
                     <th class="cabezera-table" scope="col">Apellido</th>
                     <th class="cabezera-table" scope="col">Telefono</th>
                     <th class="cabezera-table" scope="col">Direccion</th>
+                    <th class="cabezera-table" scope="col">Zona</th>
                     <th class="cabezera-table" scope="col">Correo</th>
                     <th class="cabezera-table" scope="col">Fecha Nacimiento</th>
                     <th class="cabezera-table" scope="col">Especialidad</th>
@@ -68,6 +69,7 @@ if ($resultado->num_rows > 0) {
                     <td><?php echo $datos['apellidos'] ?></td>
                     <td><?php echo $datos['telefono'] ?></td>
                     <td><?php echo $datos['dir_consultorio'] ?></td>
+                    <td><?php echo $datos['zona'] ?></td>
                     <td><?php echo $datos['email'] ?></td>
                     <td><?php echo $datos['fecha_nacimiento'] ?></td>
                     <td><?php echo $datos['espNom'] ?></td>

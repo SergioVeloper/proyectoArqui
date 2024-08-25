@@ -1,6 +1,6 @@
 <?php
-include('../../conexion.php');
-$sql = "SELECT id, nombres, apellidos, especialidad, subespecialidad, dir_consultorio FROM medico";
+include('../conexion.php');
+$sql = "SELECT id, nombres, apellidos, especialidad_id as especialidad, subespecialidad_id as subespecialidad, dir_consultorio FROM medico";
 
 try {
     $resultado = $con->query($sql);

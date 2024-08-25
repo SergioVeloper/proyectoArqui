@@ -4,15 +4,13 @@ function mostrarListaMedicosParaVisitar() {
     .then(response => response.text())
     .then(data => {
         // Inserta el contenido en el elemento con ID 'contenidos'
-        document.getElementById("contenidos").style.height = "700px";
-        document.getElementById("contenidos").innerHTML = data;
+        document.getElementById("contenido").style.height = "700px";
+        document.getElementById("contenido").innerHTML = data;
     });
 }
 
-document.addEventListener("DOMContentLoaded", function () {
+function llamarAListarMedicosParaVisitar() {
     // Selecciona el elemento con el ID 'medicosCRUD'
-    const elemento = document.getElementById("medicos");
-
     var contenedor = document.getElementById('contenido');
     var ajax = new XMLHttpRequest();
 
@@ -22,22 +20,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
     ajax.open("GET", "visitas/listarMedicosParaVisitar.php", true);
     ajax.send();
+
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    // Selecciona el elemento con el ID 'medicosCRUD'
+    const elemento = document.getElementById("visitas");
+
+    // Agrega un listener para el evento 'click'
+    elemento.addEventListener("click", function () {
+        //console.log("El botón de medicos fue clicado.");
+        llamarAListarMedicosParaVisitar();
+    });
 });
 
-
 function misRutas() {
-    fetch("scripts/visitas/misRutas.php")
+    fetch("visitas/misRutas.php")
     .then(response => response.text())
     .then(data => {
         // Inserta el contenido en el elemento con ID 'contenidos'
         
-        document.getElementById("contenidos").innerHTML = data;
+        document.getElementById("contenido").innerHTML = data;
     });
 }
 
 document.addEventListener("DOMContentLoaded", function () {
     // Selecciona el elemento con el ID 'medicosCRUD'
-    const elemento = document.getElementById("misRutas");
+    const elemento = document.getElementById("rutas");
 
     // Agrega un listener para el evento 'click'
     elemento.addEventListener("click", function () {
@@ -48,11 +57,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function generarRuta(id, pID) {
-    fetch("scripts/visitas/generadorRutas.php")
+    fetch("visitas/generadorRutas.php")
     .then(response => response.text())
     .then(data => {
         // Inserta el contenido en el elemento con ID 'contenidos'
-        document.getElementById("contenidos").innerHTML = data;
+        document.getElementById("contenido").innerHTML = data;
         if(id && pID){
             let elements = document.getElementsByClassName('boton-punto-partida');
             let ax = (id - pID);
@@ -93,7 +102,7 @@ function incluirInfoMedico(id){
             document.getElementById('infoMedicos').innerHTML = contenido;
         }
     };
-    ajax.open("GET", "scripts/visitas/medicoJsonConId.php?idMedico=" + id, true);
+    ajax.open("GET", "visitas/medicoJsonConId.php?idMedico=" + id, true);
     ajax.send();
 }
 
@@ -130,7 +139,7 @@ function incluirInfoMuestrasMedicas(id){
             document.getElementById('infoMuestras').innerHTML = contenido;
         }
     };
-    ajax.open("GET", "scripts/visitas/muestrasMedicasJsonConId.php?idMedico=" + id, true);
+    ajax.open("GET", "visitas/muestrasMedicasJsonConId.php?idMedico=" + id, true);
     ajax.send();
 }
 
@@ -138,7 +147,7 @@ function incluirInfoMuestrasMedicas(id){
 // Funcion para rescatar medicos por su id
 
 function mostrarDatosVisita(id){
-    var contenido = document.getElementById("contenidos");
+    var contenido = document.getElementById("contenido");
     contenido.innerHTML = "";
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function() {
@@ -148,21 +157,21 @@ function mostrarDatosVisita(id){
             incluirInfoMuestrasMedicas(id);
         }
     }
-    ajax.open("GET", "scripts/visitas/fomularioVisita.php?id_medico="+id, true);
+    ajax.open("GET", "visitas/fomularioVisita.php?id_medico="+id, true);
     ajax.send();
 }
 
 //Funcion para insertar la visita en la base de datos
 
 function insertarVisita(){
-    var contenido = document.getElementById("contenidos");
+    var contenido = document.getElementById("contenido");
     var formulario = document.getElementById("insertarVisitarform");
     var ajax = new XMLHttpRequest();
     enviarForm = new FormData(formulario);
     ajax.onreadystatechange = function (){
         mostrarListaMedicosParaVisitar();
     }
-    ajax.open("POST", "scripts/visitas/insetarVisita.php", true);
+    ajax.open("POST", "visitas/insetarVisita.php", true);
     ajax.send(enviarForm);
 }
 
@@ -184,7 +193,7 @@ function insertarMedicosRuta(){
             }
         }
     }
-    ajax.open("GET", "scripts/visitas/medicoJson.php", true);
+    ajax.open("GET", "visitas/medicoJson.php", true);
     ajax.send();
 }
 
@@ -202,7 +211,7 @@ function actualizarInptDireccion(){
             }
         }
     }
-    ajax.open("GET", "scripts/visitas/medicoJsonConId.php?idMedico="+id, true);
+    ajax.open("GET", "visitas/medicoJsonConId.php?idMedico="+id, true);
     ajax.send();
 }
 
@@ -228,13 +237,13 @@ function insertarRuta() {
         }
     };
 
-    ajax.open("POST", "scripts/visitas/insertarPuntoEntradaSalida.php", true);
+    ajax.open("POST", "visitas/insertarPuntoEntradaSalida.php", true);
     ajax.send(enviarForm);
 }
 
 
 function cargarFormularioPuntos(buttonId) {
-    var contenido = document.getElementById("contenidos");
+    var contenido = document.getElementById("contenido");
     var ajax = new XMLHttpRequest();
     ajax.onreadystatechange = function() {
         if (this.readyState == 4) {
@@ -249,7 +258,7 @@ function cargarFormularioPuntos(buttonId) {
             contenido.style.display = 'block';
         }
     }
-    ajax.open("GET", "scripts/visitas/formularioRegistrarRuta.php", true);
+    ajax.open("GET", "visitas/formularioRegistrarRuta.php", true);
     ajax.send();
 }
 
@@ -270,7 +279,7 @@ function obtenerPuntosHoy(){
         }
         }
     }
-    ajax.open("GET", "scripts/visitas/obtenerIdRutaPorDia.php", true);
+    ajax.open("GET", "visitas/obtenerIdRutaPorDia.php", true);
     ajax.send();
 }
 
@@ -287,7 +296,7 @@ function obtenerUltimoIdTurno(id){
             }
         }
     }
-    ajax.open("GET", "scripts/visitas/obtenerUltimoIdTurno.php?id_entradaSalida="+id, true);
+    ajax.open("GET", "visitas/obtenerUltimoIdTurno.php?id_entradaSalida="+id, true);
     ajax.send();
 }
 
@@ -303,6 +312,6 @@ function obtenerPrimerIdTurno(idE, idUltimo){
             }
         }
     }
-    ajax.open("GET", "scripts/visitas/obtenerPrimerIdTuno.php?id_entradaSalida="+idE, true);
+    ajax.open("GET", "visitas/obtenerPrimerIdTuno.php?id_entradaSalida="+idE, true);
     ajax.send();
 }

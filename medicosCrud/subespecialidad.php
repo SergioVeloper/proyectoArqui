@@ -4,7 +4,7 @@ include('../conexion.php');
 $id = $_GET['id'];
 if(isset($_GET['idMM'])){
     $id_m = $_GET['idMM'];
-    $sql = "SELECT s.id as id, s.nombre as nombre FROM subespecialidad s LEFT JOIN muestrasMedicas m ON m.subespecialidad_id = s.id WHERE m.id = $id_m";
+    $sql = "SELECT s.id as id, s.nombre as nombre FROM subespecialidad s LEFT JOIN medico m ON m.subespecialidad_id = s.id WHERE m.id = $id_m";
 
 }
 else{

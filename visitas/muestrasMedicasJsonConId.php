@@ -1,9 +1,9 @@
 <?php
-include('../../conexion.php');
+include('../conexion.php');
 $id = $_GET['idMedico'];
 
 $sql = 'SELECT m.id as id, m.nombre as nombreMuestra from muestrasMedicas m
-        INNER JOIN subespecialidad s ON m.subespecialidad_id = s.id INNER JOIN medico me ON s.nombre = me.subespecialidad
+        INNER JOIN subespecialidad s ON m.subespecialidad_id = s.id INNER JOIN medico me ON s.id = me.subespecialidad_id
         WHERE me.id = '.$id;
 try {
     $resultado = $con->query($sql);

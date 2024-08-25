@@ -22,6 +22,10 @@
             <input type="text" name="direccionMedico" class="form-control" placeholder="Correo" id="direccionMedico">
             <label for="direccionMedico">Direccion</label>
         </div>
+        <div class="form-floating mb-3">
+            <input type="text" name="zona" class="form-control" placeholder="Zona del consultorio" id="zona">
+            <label for="zona">Zona</label>
+        </div>
 
         <div class="form-floating mb-3">
             <input type="text" name="emailMedico" class="form-control" placeholder="Correo" id="emailMedico">

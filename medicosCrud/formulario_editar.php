@@ -2,7 +2,7 @@
 <?php
     include('../conexion.php');
     $id = $_GET['id'];
-    $sql = "SELECT id, nombres, apellidos, telefono, email, dir_consultorio, fecha_nacimiento, especialidad_id, subespecialidad_id FROM medico WHERE id = $id";
+    $sql = "SELECT id, nombres, apellidos, telefono, email, dir_consultorio, fecha_nacimiento, especialidad_id, subespecialidad_id, Zona FROM medico WHERE id = $id";
     //echo $sql;
     try {
         $resultado = $con->query($sql);
@@ -37,6 +37,11 @@
                 <input class="form-control" type="hidden">
                 <label for="dir_consultorio">Direccion </label>
                 <input class="form-control" type="text" name="dir_consultorio" value="<?php echo $datos['dir_consultorio']?>">
+            </div>            
+            <div class="form-floating mb-3">
+                <input class="form-control" type="hidden">
+                <label for="zona">Zona </label>
+                <input class="form-control" type="text" name="zona" value="<?php echo $datos['Zona']?>">
             </div>
 
             <div class="form-floating mb-3">

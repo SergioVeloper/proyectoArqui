@@ -1,5 +1,5 @@
 <?php
-include('../../conexion.php');
+include('../conexion.php');
 $sql_verificar = "SELECT * FROM entradaSalida WHERE id_visitador = $id_visitador AND fecha = '$fecha_actual'";
 $resultado = $con->query($sql_verificar);
 if ($resultado->num_rows == 0) {

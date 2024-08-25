@@ -1,6 +1,6 @@
  <?php
 
-include('../../conexion.php');
+include('../conexion.php');
 
 // Suponiendo que `$id_visitador` se obtiene de la sesión
 //$id_visitador = $_SESSION['id_visitador'];

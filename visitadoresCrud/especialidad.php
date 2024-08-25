@@ -5,7 +5,7 @@ if(isset($_GET['especialidad_id'])){
     // $sql = "SELECT e.id as id, e.nombre as nombre FROM especialidad e  LEFT JOIN muestrasMedicas m ON m.especialidad_id = e.id WHERE m.id  = $id_e";
     $sql = "SELECT e.id as id, e.nombre as nombre 
     FROM especialidad e 
-    LEFT JOIN muestrasMedicas m ON m.especialidad_id = e.id 
+    LEFT JOIN visitador m ON m.especialidad_id = e.id 
     GROUP BY e.id, e.nombre 
     ORDER BY (MAX(m.id = $id_e)) DESC, e.nombre ASC";
 

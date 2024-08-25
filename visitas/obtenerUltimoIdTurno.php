@@ -1,5 +1,5 @@
 <?php
-include('../../conexion.php');
+include('../conexion.php');
 $es_id = $_GET['id_entradaSalida'];
 
 $sql = "SELECT MAX(id) AS id FROM Turno WHERE id_entradaSalida = $es_id";

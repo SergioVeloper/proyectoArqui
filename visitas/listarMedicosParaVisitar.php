@@ -30,7 +30,7 @@ if (isset($_SESSION['usuario_id'])) {
             $especialidad_id = $rowVisitador["especialidad_id"];
 
             // Preparar y ejecutar la consulta para obtener los médicos
-            $sql = "SELECT id, nombres, apellidos, dir_consultorio, telefono FROM medico WHERE especialidad_id = ?";
+            $sql = "SELECT id, nombres, apellidos, dir_consultorio, Zona, telefono FROM medico WHERE especialidad_id = ?";
             $stmt = $con->prepare($sql);
             $stmt->bind_param("i", $especialidad_id); // "i" para entero
             $stmt->execute();
@@ -42,6 +42,7 @@ if (isset($_SESSION['usuario_id'])) {
             echo "<th class='cabezera-table' scope='col'>Nombres</th>";
             echo "<th class='cabezera-table' scope='col'>Apellidos</th>";
             echo "<th class='cabezera-table' scope='col'>Dirección Consultorio</th>";
+            echo "<th class='cabezera-table' scope='col'>Zona</th>";
             echo "<th class='cabezera-table' scope='col'>Teléfono</th>";
             echo "<th class='cabezera-table' scope='col'>Acciones</th>";
             echo "</tr>";
@@ -51,6 +52,7 @@ if (isset($_SESSION['usuario_id'])) {
                 echo "<td>" . htmlspecialchars($row["nombres"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["apellidos"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["dir_consultorio"]) . "</td>";
+                echo "<td>" . htmlspecialchars($row["Zona"]) . "</td>";
                 echo "<td>" . htmlspecialchars($row["telefono"]) . "</td>";
                 echo "<td> <button class='btn btn-primary btn-sm' onclick='mostrarDatosVisita(" . $row["id"] . ")'> Registrar Visita </button></td>";
                 echo "</tr>";

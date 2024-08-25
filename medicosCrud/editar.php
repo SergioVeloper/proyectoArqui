@@ -11,6 +11,7 @@ $dir_consultorio = $_POST['dir_consultorio'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 $especialidad_id = $_POST['especialidadMuestra'];
 $subespecialidad_id = $_POST['subEspecialidadMuestra'];
+$zona = $_POST['zona'];
 
 $sql = "UPDATE medico SET
 nombres = '$nombres', 
@@ -20,7 +21,8 @@ email = '$email',
 dir_consultorio = '$dir_consultorio',
 fecha_nacimiento = '$fecha_nacimiento', 
 especialidad_id = $especialidad_id, 
-subespecialidad_id = $subespecialidad_id  
+subespecialidad_id = $subespecialidad_id,
+Zona = '$zona'
 WHERE id = $id";
 echo $sql;
 try{

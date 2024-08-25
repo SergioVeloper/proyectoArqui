@@ -1,5 +1,5 @@
 <?php
-include '../../conexion.php';
+include('../conexion.php');
 ?>
 
 <div class = "d-grid gap-2" id = "divRutas">

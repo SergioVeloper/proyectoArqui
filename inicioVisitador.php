@@ -91,7 +91,6 @@ catch(Exception $e)
     <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
     <!-- Scripts específicos para las secciones -->
-    <script src="rutasCrud/scriptRutas.js"></script>
     <script src="visitas/visitas.js"></script>
 </body>
 
