@@ -83,7 +83,7 @@ catch(Exception $e)
         </aside>
         <div class="main p-3 content-fluid">
             <div class="text-center">
-                <h1>Bienvenido, Visitador</h1>
+                <!-- <h1>Bienvenido, Visitador</h1> -->
                 <div id="contenido"></div>
             </div>
         </div>

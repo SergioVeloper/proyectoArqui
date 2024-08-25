@@ -14,7 +14,7 @@ if (isset($_SESSION['usuario_id'])) {
 
 ?>
 
-<div class="listaMedicos">
+<div class="listaMedicos table-responsive">
 
     <div class="contenedor_lista content-fluid text-center">
         <?php

@@ -42,7 +42,7 @@ $i = 1;
 
 if ($resultado->num_rows > 0) {
     ?>
-    <div>
+    <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -50,7 +50,7 @@ if ($resultado->num_rows > 0) {
                     <th class="cabezera-table" scope="col">Nombre</th>
                     <th class="cabezera-table" scope="col">Apellido</th>
                     <th class="cabezera-table" scope="col">Telefono</th>
-                    <th class="cabezera-table" scope="col">Correo</th>
+                    <!-- <th class="cabezera-table" scope="col">Correo</th> -->
                     <th class="cabezera-table" scope="col">Especialidad</th>
                     <th class="cabezera-table" scope="col">Subespecialidad</th>
                     <th class="cabezera-table" scope="col">Operaciones</th>
@@ -65,7 +65,7 @@ if ($resultado->num_rows > 0) {
                     <td><?php echo $datos['nombre'] ?></td>
                     <td><?php echo $datos['apellido'] ?></td>
                     <td><?php echo $datos['telefono'] ?></td>
-                    <td><?php echo $datos['correo'] ?></td>
+                    <!-- <td><?php //echo $datos['correo'] ?></td> -->
                     <td><?php echo $datos['espNom'] ?></td>
                     <td> <?php echo $datos['subEsp'] ?></td>
                     <td><a href="javascript:editarVisitador('<?php echo $datos["id_visitador"] ?>')"><i class="bi bi-pencil-square editar"></i></a>

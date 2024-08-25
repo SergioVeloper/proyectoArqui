@@ -116,25 +116,23 @@ function incluirInfoMuestrasMedicas(id){
             var contenido = '<div class="card mb-3">';
             contenido += '<div class="card-header bg-primary text-white">Muestras Entregadas</div>';
             contenido += '<div class="card-body">';
-            contenido += '<table class="table table-bordered">';
+            contenido += '<div class="row">'; // Iniciar la fila
 
-            for(let j = 0; j < 3; j++){
-                contenido += '<tr>';
-                for(let i = 0; i < muestras.length; i++){ 
-                    let muestra = muestras[i]; 
-                    if(j == 0){
-                        contenido += `<td class="text-center font-weight-bold">${muestra.nombreMuestra}</td>`; 
-                    } else if(j == 1){
-                        contenido += `<td><input type="hidden" name="medicamento_id[]" value="${muestra.id}"></td>`; 
-                    } else if(j == 2){
-                        contenido += `<td><input placeholder="Cantidad" type="number" name="cantidadMuestra[]" class="form-control"></td>`; 
-                    }
-                }
-                contenido += '</tr>';
+            for(let i = 0; i < muestras.length; i++){ 
+                let muestra = muestras[i]; 
+                
+                contenido += '<div class="col-12 col-md-4 mb-3">'; // Columna de 12 en pantallas pequeñas y 4 en medianas/grandes
+                contenido += `<div class="card h-100">`; // Iniciar un card dentro de la columna para mejor manejo
+                contenido += `<div class="card-header text-center font-weight-bold">${muestra.nombreMuestra}</div>`;
+                contenido += '<div class="card-body">';
+                contenido += `<input type="hidden" name="medicamento_id[]" value="${muestra.id}">`; 
+                contenido += `<input placeholder="Cantidad" type="number" name="cantidadMuestra[]" class="form-control mt-2">`;
+                contenido += '</div></div>'; // Cerrar card y columna
+                contenido += '</div>';
             }
 
-            contenido += '</table>';
-            contenido += '</div></div>';
+            contenido += '</div>'; // Cerrar fila
+            contenido += '</div></div>'; // Cerrar card-body y card
 
             document.getElementById('infoMuestras').innerHTML = contenido;
         }
@@ -142,6 +140,7 @@ function incluirInfoMuestrasMedicas(id){
     ajax.open("GET", "visitas/muestrasMedicasJsonConId.php?idMedico=" + id, true);
     ajax.send();
 }
+
 
 
 // Funcion para rescatar medicos por su id
