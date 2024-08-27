@@ -13,6 +13,9 @@ if (isset($_SESSION['usuario_id'])) {
 }
 
 ?>
+
+<div class="listaMedicos table-responsive">
+
 <div>
     <form action="javascript:buscarLM()" method="get">
         <label for="filtro">Buscar: </label>

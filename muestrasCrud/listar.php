@@ -42,7 +42,7 @@ $i = 1;
 
 if ($resultado->num_rows > 0) {
     ?>
-    <div>
+    <div class="table-responsive">
         <table class="table table-hover">
             <thead>
                 <tr>
